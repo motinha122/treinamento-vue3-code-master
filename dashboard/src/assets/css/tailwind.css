@@ -1,0 +1,9 @@
+/* ./src/assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body,#app{
+    width: 100%;
+    height: 100%;
+}
