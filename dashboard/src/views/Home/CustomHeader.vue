@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <div class="flex flex-col w-4/5 max-w-6xl">
+        <div class="header-group">
 
             <div class="flex items-center justify-between py-10">
                 <div class="w-28 lg:w-26">
@@ -8,10 +8,14 @@
                 </div>
     
                 <div class="flex">
-                    <button class="px-6 py-2 font-bold bg-white rounded-full text-white focus:outline-none">
+                    <button 
+                    @click="() => emit('create-account')"
+                    class="px-6 py-2 font-bold rounded-full text-white focus:outline-none">
                         Crie uma conta
                     </button>
-                    <button class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline-none">
+                    <button
+                    @click="()=>emit('login')"
+                    class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline-none">
                         Entrar
                     </button>
                 </div>
@@ -23,9 +27,16 @@
                     E faça seus clientes mais <br class="hidden lg:inline-block">
                     felizes!
                 </h1>
-                <p>
-                    Receba ideias, reclamações e feedbacks com um simples widget na página.
+                <p class="text-lg font-medium text-white">
+                    Receba ideias, reclamações e feedbacks com um <br class="hidden lg:inline-block"> simples widget na página.
                 </p>
+                <div>
+                    <button 
+                    @click="() => emit('create-account')"
+                    class="px-6 py-2 mt-10 font-bold bg-white rounded-full text-brand-main focus:outline-none">
+                        Crie uma conta grátis
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -33,16 +44,29 @@
 </template>
 
 <script>
-    export default {
-        
+export default {
+    setup(_, { emit }) {
+        return {emit}    
     }
+}
 </script>
 
 <style lang="postcss" scoped>
-
 .header{
     @apply bg-brand-main w-full flex justify-center;
     height: 700px;
 }
 
+.header-group{
+    @apply flex flex-col w-4/5 max-w-6xl;
+}
+
+@media (min-width: 640px){
+    .header-group{
+        background-image: url(../../assets/img/balloons.png);
+        background-size: 628px;
+        background-position: 90% 100%;
+        background-repeat: no-repeat;
+    }
+}
 </style>
